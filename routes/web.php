@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     // if (!Cache::get('test')) Cache::forever('test',  DB::table('hotels')->orderBy('id')->cursorPaginate());
     $page = request('page') ?: 1;
-    if (!Cache::tags(['hotels'])->get("page={$page}")) Cache::tags(['hotels'])->forever("page={$page}", Hotel::orderBy('id')->paginate(10));
-    $data['tes'] = Cache::tags(['hotels'])->get("page={$page}");
+    if (!Cache::tags(['hotels'])->get("test")) Cache::tags(['hotels'])->forever("test", Hotel::orderBy('id')->get());
+    $data['tes'] = Cache::tags(['hotels'])->get("test");
     // return Cache::get('test');
     // $data['tes'] = Hotel::orderBy('id')->cursorPaginate();
     // $data['tes'] = DB::select("SELECT * FROM hotels");
